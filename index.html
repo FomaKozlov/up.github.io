@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Общежитие Программистов - Главная</title>
+    <!-- Подключаем Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Стили для модального окна */
+        .modal {
+            display: none; /* Скрываем модальное окно по умолчанию */
+            position: fixed; /* Фиксированное позиционирование, чтобы окно всегда было видно */
+            z-index: 1; /* Помещаем окно поверх всего контента */
+            left: 0;
+            top: 0;
+            width: 100%; /* Ширина во всю ширину экрана */
+            height: 100%; /* Высота во всю высоту экрана */
+            overflow: auto; /* Добавляем полосу прокрутки, если контент не помещается */
+            background-color: rgba(0, 0, 0, 0.4); /* Полупрозрачный фон */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* Центрируем окно по вертикали и горизонтали */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Ширина контента окна */
+            max-width: 600px; /* Максимальная ширина */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Дополнительные стили для формы */
+        #bookForm input[type="text"],
+        #bookForm input[type="email"],
+        #bookForm input[type="tel"],
+        #bookForm select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        #bookForm button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        #bookForm button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Общежитие "НИТ"</div>
+        <nav>
+            <ul>
+                <li class="abc"><a href="index.html" class="active">Главная</a></li>
+                <li class="abc"><a href="about.html">О нас</a></li>
+                <li class="abc"><a href="contacts.html">Контакты</a></li>
+                <li><button id="loginBtn" class="btn">Вход</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Добро пожаловать в общежитие для студентов</h1>
+            <p>Комфортное проживание для будущих специалистов с высокоскоростным интернетом и круглосуточным доступом</p>
+            <button id="bookBtn" class="btn">Забронировать комнату</button>
+        </section>
+
+        <!-- Слайдер с картинками -->
+        <section class="slider-container">
+            <div class="slider">
+                <div class="slides">
+                    <div class="slide">
+                        <img src="obchaga.jpg" alt="Вход в общежитие">
+                        <div class="slide-caption">Вход в общежитие</div>
+                    </div>
+                    <div class="slide">
+                        <img src="photo1.jpg" alt="Коворкинг зона">
+                        <div class="slide-caption">Современная коворкинг зона</div>
+                    </div>
+                    <div class="slide">
+                        <img src="photo2.jpg" alt="Рабочее место">
+                        <div class="slide-caption">Удобное рабочее место</div>
+                    </div>
+                    <div class="slide">
+                        <img src="photo3.jpg" alt="Отдеьные шкафы">
+                        <div class="slide-caption">Просторные шкафы</div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-nav">
+                <button id="prevBtn"><i class="fas fa-arrow-left"></i> Назад</button>
+                <button id="nextBtn">Вперед <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature">
+                <i class="fas fa-wifi"></i>
+                <h3>Wi-Fi 1 Гбит/с</h3>
+                <p>Скоростной интернет без ограничений</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-laptop"></i>
+                <h3>24/7 Аренда</h3>
+                <p>Рабочие места доступны круглосуточно</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-users"></i>
+                <h3>Сообщество студентов</h3>
+                <p>Общайтесь с единомышленниками</p>
+            </div>
+        </section>
+
+        <!-- Аккордеон с вопросами -->
+        <section class="faq">
+            <h2 style="text-align: center; margin-bottom: 20px;">Часто задаваемые вопросы</h2>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">Какие условия проживания?</div>
+                    <div class="accordion-content">
+                        <p>Мы предлагаем комфортабельные комнаты на 1, 2 или 4 человека. В каждой комнате есть рабочее место, кровать, шкаф для одежды. На этажах расположены кухни и душевые.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">Есть ли парковка?</div>
+                    <div class="accordion-content">
+                        <p>Да, на территории общежития есть охраняемая парковка. Стоимость парковочного места - 1000 руб./месяц.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">Можно ли заселиться с животными?</div>
+                    <div class="accordion-content">
+                        <p>Да, мы разрешаем проживание с небольшими домашними животными при условии дополнительного залога в размере 5000 руб.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">Какой минимальный срок аренды?</div>
+                    <div class="accordion-content">
+                        <p>Минимальный срок аренды - 1 месяц. Для краткосрочного проживания (от 3 дней) доступны специальные тарифы.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>О нас</h3>
+                <p>Общежитие "НИТ" - это современное жилье для студентов с комфортными условиями и всем необходимым для учёбы и отдыха.</p>
+                <div class="social-links">
+                    <a href="https://vk.me/join/b2ZDpKEnwm9x0PM4sgLuLzXY077rLx8MXvo="><i class="fab fa-vk"></i></a>
+                    <a href="https://t.me/+etSFPpE6XlYyYWQ6"><i class="fab fa-telegram"></i></a>
+                    <a href="https://chat.whatsapp.com/GIRHVz71XT09Lm6hTyUaBI"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Быстрые ссылки</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>Адрес: г. Нижнекамск, ул. 30 лет Победы, 11</li>
+                    <li>Телефон: +7 (495) 123-45-67</li>
+                    <li>Email: info@nit-hostel.ru</li>
+                    <li>Режим работы: круглосуточно</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Подписаться на новости</h3>
+                <form class="subscribe-form">
+                    <input type="email" placeholder="Ваш email" required>
+                    <button type="submit" class="btn">Подписаться</button>
+                </form>
+                <p>Будьте в курсе всех событий и специальных предложений.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Общежитие "НИТ". Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Кнопка "Вверх" -->
+    <button id="scrollToTopBtn"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Модальное окно входа -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Вход в систему</h2>
+            <form id="loginForm">
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Пароль" required>
+                <button type="submit" class="btn">Войти</button>
+                <div class="error-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно бронирования -->
+    <div id="bookModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Бронирование комнаты</h2>
+            <form id="bookForm">
+                <input type="text" name="name" placeholder="Ваше имя" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="tel" name="phone" placeholder="Телефон" required>
+                <select name="roomType" required>
+                    <option value="" disabled selected>Выберите тип комнаты</option>
+                    <option value="single">Одноместная</option>
+                    <option value="double">Двухместная</option>
+                    <option value="dorm">Общая (4 человека)</option>
+                </select>
+                <button type="submit" class="btn">Отправить заявку</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Добавляем Font Awesome для иконок -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <script>
+        // Получаем модальное окно
+        var modal = document.getElementById("bookModal");
+
+        // Получаем кнопку, которая открывает модальное окно
+        var btn = document.getElementById("bookBtn");
+
+        // Получаем элемент <span>, который закрывает модальное окно
+        var span = document.getElementsByClassName("close")[1]; // [1] т.к. это второе модальное окно
+
+        // Когда пользователь нажимает на кнопку, открываем модальное окно
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // Когда пользователь нажимает на <span> (x), закрываем модальное окно
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Когда пользователь кликает в любое место за пределами модального окна, закрываем его
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Код для модального окна входа - оставляем как есть, если он используется
+        var loginModal = document.getElementById("loginModal");
+        var loginBtn = document.getElementById("loginBtn");
+        var loginSpan = document.getElementsByClassName("close")[0]; // [0] т.к. это первое модальное окно
+
+        loginBtn.onclick = function() {
+            loginModal.style.display = "block";
+        }
+
+        loginSpan.onclick = function() {
+            loginModal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == loginModal) {
+                loginModal.style.display = "none";
+            }
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

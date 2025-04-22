@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Общежитие Программистов - О нас</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Общежитие "НИТ"</div>
+        <nav>
+            <ul>
+                <li class="abc"><a href="index.html">Главная</a></li>
+                <li class="abc"><a href="about.html" class="active">О нас</a></li>
+                <li class="abc"><a href="contacts.html">Контакты</a></li>
+                <li><button id="loginBtn" class="btn">Вход</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="about">
+            <h1>О нашем общежитии</h1>
+            <p>Общежитие "НИТ" было основано в 1975 году с целью предоставить комфортное и современное жилье для студентов. Мы стремимся создать идеальное пространство, где программисты могут жить, работать и общаться в среде единомышленников.</p>
+
+            <ul class="advantages">
+                <li><i class="fas fa-clock"></i> Круглосуточный доступ</li>
+                <li><i class="fas fa-laptop-code"></i> IT-мероприятия и хакатоны</li>
+                <li><i class="fas fa-couch"></i> Комфортные условия для работы и отдыха</li>
+                <li><i class="fas fa-users"></i> Сообщество единомышленников</li>
+            </ul>
+
+            <section class="sponsors">
+                <h2>Наши спонсоры</h2>
+                <p>Мы благодарны нашим спонсорам за поддержку и вклад в развитие общежития "НИТ":</p>
+                <ul>
+                    <li>КамаTyres</li>
+                    <li>ТАИФ</li>
+                    <li>Ростелеком - обеспечивает надежную связь и интернет</li>
+                </ul>
+                <p>Благодаря нашим спонсорам, мы можем предоставлять лучшие условия для проживания и учёбы наших студентов.</p>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>О нас</h3>
+                <p>Общежитие "НИТ" - это современное жилье для студентов с комфортными условиями и всем необходимым для учёбы и отдыха.</p>
+                <div class="social-links">
+                    <a href="https://vk.me/join/b2ZDpKEnwm9x0PM4sgLuLzXY077rLx8MXvo="><i class="fab fa-vk"></i></a>
+                    <a href="https://t.me/+etSFPpE6XlYyYWQ6"><i class="fab fa-telegram"></i></a>
+                    <a href="https://chat.whatsapp.com/GIRHVz71XT09Lm6hTyUaBI"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Быстрые ссылки</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>Адрес: г. Нижнекамск, ул. 30 лет Победы, 11</li>
+                    <li>Телефон: +7 (495) 123-45-67</li>
+                    <li>Email: info@nit-hostel.ru</li>
+                    <li>Режим работы: круглосуточно</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Подписаться на новости</h3>
+                <form class="subscribe-form">
+                    <input type="email" placeholder="Ваш email" required>
+                    <button type="submit" class="btn">Подписаться</button>
+                </form>
+                <p>Будьте в курсе всех событий и специальных предложений.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Общежитие "НИТ". Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Кнопка "Вверх" -->
+    <button id="scrollToTopBtn"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Модальное окно входа -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Вход в систему</h2>
+            <form id="loginForm">
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Пароль" required>
+                <button type="submit" class="btn">Войти</button>
+                <div class="error-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно бронирования -->
+    <div id="bookModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Бронирование комнаты</h2>
+            <form id="bookForm">
+                <input type="text" name="name" placeholder="Ваше имя" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="tel" name="phone" placeholder="Телефон" required>
+                <select name="roomType" required>
+                    <option value="" disabled selected>Выберите тип комнаты</option>
+                    <option value="single">Одноместная</option>
+                    <option value="double">Двухместная</option>
+                    <option value="dorm">Общая (4 человека)</option>
+                </select>
+                <button type="submit" class="btn">Отправить заявку</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
